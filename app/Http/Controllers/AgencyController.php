@@ -1,52 +1,48 @@
 <?php
 
-namespace App\Http\Controllers\V1;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Staff;
+use App\Models\Agency;
 use Illuminate\Http\Request;
 
-class StaffController extends Controller
+class AgencyController extends Controller
 {
     // Display a listing of the model
     public function index()
     {
         try {
-            return response()->json(Staff::paginate());
-            //return view('staff.index', compact('staff'));
+            return response()->json(Agency::paginate(10));
         }catch ( \Throwable $th){
             return response()->json(['message'=>$th->getMessage()], status:404);
         }
-
+        //return view('agency.index', compact('agency'));
     }
 
     // Show the form for creating a new model instance
     //public function create()
     //{
-    //    return view('staff.create');
+    //    return view('agency.create');
     //}
 
     // Store a newly created model instance in storage
     public function store(Request $request)
     {
         try {
-        Staff::create($request->all());
-        }
-        catch ( \Throwable $th){
+            Agency::create($request->all());
+//            return redirect()->route('agency.index');
+        }catch ( \Throwable $th){
             return response()->json(['message'=>$th->getMessage()], status:404);
         }
 
-//        return redirect()->route('staff.index');
     }
 
     // Display the specified model instance
     public function show($id)
     {
         try {
-            $staff = Staff::findOrFail($id);
-//        return view('staff.show', compact('staff'));
-            return response()->json($staff);
-
+            $agency = Agency::findOrFail($id);
+//            return view('agency.show', compact('agency'));
+            return response()->json($agency);
         }catch ( \Throwable $th){
             return response()->json(['message'=>$th->getMessage()], status:404);
         }
@@ -56,33 +52,34 @@ class StaffController extends Controller
     // Show the form for editing the specified model instance
     //public function edit($id)
     //{
-    //    $staff = Staff::findOrFail($id);
-    //    return view('staff.edit', compact('staff'));
+    //    $agency = Agency::findOrFail($id);
+    //    return view('agency.edit', compact('agency'));
     //}
 
     // Update the specified model instance in storage
     public function update(Request $request, $id)
     {
         try {
-            Staff::findOrFail($id)->update($request->all());
+            Agency::findOrFail($id)->update($request->all());
             return response();
         }catch ( \Throwable $th){
             return response()->json(['message'=>$th->getMessage()], status:404);
         }
 
-        // return redirect()->route('staff.index');
+        // return redirect()->route('agency.index');
     }
 
     // Remove the specified model instance from storage
     public function destroy($id)
     {
         try {
-            Staff::findOrFail($id)->delete();
+            Agency::findOrFail($id)->delete();
             return response();
-            // return redirect()->route('staff.index');
         }catch ( \Throwable $th){
             return response()->json(['message'=>$th->getMessage()], status:404);
         }
 
+        // return redirect()->route('agency.index');
     }
+
 }

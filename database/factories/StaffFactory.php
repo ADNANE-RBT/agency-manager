@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Agency;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Staff>
@@ -21,9 +22,9 @@ class StaffFactory extends Factory
             'firstname' => $this->faker->firstName,
             'lastname' => $this->faker->lastName,
             'agency_id'=> Agency::factory(),
-            'phone'=>$this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail,
-            'password'=>$this->faker->phoneNumber,
+            'phone'=>$this->faker->phoneNumber,
+            'password' => Hash::make('Trololo123@'),
         ];
     }
 }

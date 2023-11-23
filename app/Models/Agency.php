@@ -20,6 +20,7 @@ class Agency extends Authenticatable
         'password',
         'logo',
         'website',
+
     ];
 
     protected $hidden = [
