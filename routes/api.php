@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\StaffController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+// Routes for Agency
+Route::get('/agency', [AgencyController::class, 'index']);
+Route::get('/agency/{id}', [AgencyController::class, 'show']);
+Route::post('/agency', [AgencyController::class, 'store']);
+Route::put('/agency/{id}', [AgencyController::class, 'update']);
+Route::delete('/agency/{id}', [AgencyController::class, 'destroy']);
+// Routes for Staff
+Route::get('/staff', [StaffController::class, 'index']);
+Route::get('/staff/{id}', [StaffController::class, 'show']);
+Route::post('/staff', [StaffController::class, 'store']);
+Route::put('/staff/{id}', [StaffController::class, 'update']);
+Route::delete('/staff/{id}', [StaffController::class, 'destroy']);
