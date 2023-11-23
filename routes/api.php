@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AgencyController;
-use App\Http\Controllers\StaffController;
+use App\Http\Controllers\V1\AgencyController;
+use App\Http\Controllers\V1\StaffController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

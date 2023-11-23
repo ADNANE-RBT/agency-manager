@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Agency;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,12 @@ class StaffFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'firstname' => $this->faker->firstName,
+            'lastname' => $this->faker->lastName,
+            'agency_id'=> Agency::factory(),
+            'phone'=>$this->faker->phoneNumber,
+            'email' => $this->faker->unique()->safeEmail,
+            'password'=>$this->faker->phoneNumber,
         ];
     }
 }
